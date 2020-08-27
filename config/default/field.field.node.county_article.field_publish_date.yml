@@ -1,0 +1,24 @@
+uuid: 1b7a90df-e59a-4899-86bb-e7a3c54b5100
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_publish_date
+    - node.type.county_article
+  module:
+    - datetime
+id: node.county_article.field_publish_date
+field_name: field_publish_date
+entity_type: node
+bundle: county_article
+label: 'Publish Date'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime
