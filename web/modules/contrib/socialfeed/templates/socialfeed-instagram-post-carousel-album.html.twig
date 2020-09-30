@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Theme implementation to display the Instagram Carousel.
+ *
+ * Available variables:
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ * - post: The filtered data.
+ *   - raw: The basic response data from getUserMedia().
+ *     - caption: The Media's caption text. Not returnable for Media in albums.
+ *     - id: The Media's ID.
+ *     - media_type: The Media's type. Can be IMAGE, VIDEO, or CAROUSEL_ALBUM.
+ *     - media_url: The Media's URL.
+ *     - permalink: The Media's permanent URL. Will be omitted if the Media contains copyrighted material, or has been
+  flagged for a copyright violation.
+ *     - timestamp: The Media's publish date in ISO 8601 format.
+ *     - username: The Media owner's username.
+ *     - children: The list of Media on the Media album. Only available if the `type` is CAROUSEL_ALBUM Media.
+ *       - id: The Media's ID.
+ *       - media_type: The Media's type. Can be IMAGE, VIDEO.
+ *       - media_url: The Media's URL.
+ *       - permalink: The Media's permanent URL. Will be omitted if the Media contains copyrighted material, or has been
+  flagged for a copyright violation.
+ *       - timestamp: The Media's publish date in ISO 8601 format.
+ *       - username: The Media owner's username.
+ *
+ * @see template_preprocess_block()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if post.media_url %}
+  {% set alt = post.raw.caption ? post.raw.caption[:50] ~ (post.raw.caption|length > 50 ? '...') : '' %}
+  {% if post.children %}
+    <div class="instagram-carousel">
+      {% for children in post.children.data %}
+        {% if post.post_url %}
+          <a href="{{ children.permalink }}" target="_blank">
+            <img src="{{ children.media_url }}" alt="{{ children.caption }}"/>
+          </a>
+        {% else %}
+          <img src="{{ children.media_url }}" alt="{{ children.caption }}"/>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% elseif post.post_url %}
+    <a href="{{ post.post_url }}" target="_blank">
+      <img src="{{ post.media_url }}" alt="{{ alt }}"/>
+    </a>
+  {% else %}
+    <img src="{{ post.media_url }}" alt="{{ alt }}"/>
+  {% endif %}
+{% endif %}

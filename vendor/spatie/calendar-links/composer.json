@@ -1,0 +1,42 @@
+{
+    "name": "spatie/calendar-links",
+    "description": "Generate add to calendar links for Google, iCal and other calendar systems",
+    "keywords": [
+        "spatie",
+        "calendar-links"
+    ],
+    "homepage": "https://github.com/spatie/calendar-links",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sebastian De Deyne",
+            "email": "sebastian@spatie.be",
+            "homepage": "https://spatie.be",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2 || ^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5 || ^9.0",
+        "spatie/phpunit-snapshot-assertions": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spatie\\CalendarLinks\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spatie\\CalendarLinks\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test:update-snapshots": "vendor/bin/phpunit -d --update-snapshots"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

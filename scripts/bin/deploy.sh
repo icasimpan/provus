@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEV_BRANCH="develop"
+DEV_BRANCH="deploy-finishing"
 REMOTE="master"
 CURRENT_BRANCH=`git name-rev --name-only HEAD`
 CURRENT_TAG=`git name-rev --tags --name-only $(git rev-parse HEAD)`
