@@ -12,11 +12,18 @@ auth_hosting()
    TERMINUS_BIN=$PROJECT_ROOT/scripts/vendor/terminus
 
    $TERMINUS_BIN auth:login --machine-token=$SECRET_TERMINUS_TOKEN
+ elif [ "$HOSTING_PLATFORM" == "acquia" ]
+ then
+   echo "Building for Acquia."
  else
-   ## TODO: Support Acquia soon...
-   echo "ERROR: Unknown hosting. Supports Pantheon.io for now."
+   echo "ERROR: Unknown hosting. Supports Pantheon and Acquia for now."
    exit 1
  fi
+}
+
+build()
+{
+  ${PROJECT_ROOT}/scripts/bin/build-theme.sh
 }
 
 add_remote()
@@ -38,6 +45,7 @@ push()
 {
   add_remote
   set_perms
+  build
   git add .
   git commit -m "Build for $1"
   [[ "$HOSTING_PLATFORM" == "pantheon" ]] && pantheon_conn_switch git  ## Must be 'git mode' in Pantheon to commit.
