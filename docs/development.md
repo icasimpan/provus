@@ -5,7 +5,7 @@
 * [Testing](#testing)
 * [Theming](#theming)
 * [Getting Updates](#getting-updates)
-* [Deployment[(#deployment)
+* [Deployment](#deployment)
 
 ## Installation & Setup
 
