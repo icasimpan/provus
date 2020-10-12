@@ -1,8 +1,33 @@
 # Development
 
+* [Docksal Commands](#docksal-commands)
+* [Installation](#installation-setup)
+* [Testing](#testing)
+* [Theming](#theming)
+* [Getting Updates](#getting-updates)
+* [Deployment[(#deployment)
+
+## Installation & Setup
+
+[Install Docksal](https://docs.docksal.io/getting-started/setup/).
+
+Once you've setup docker run:
+
+``fin init``
+
+This will install the database and get you all ready to roll.
+
+### Setup git remote
+
+Add your remote git project from Pantheon or Acquia as ``git remote add deploy [remote-git-url]``.
+
+### Add Terminus Settings
+
+For Pantheon projects add your pantheon token as ``SECRET_TERMINUS_TOKEN=`` to ``./docsal/docksal-local.env`` and restart docksal (``fin restart``) to use Terminus.
+
 ## Docksal Commands
 
-Provus uses [Docksa](http://docksal.io) for local development and in the CI. In additon to basic commands we also include:
+Provus uses [Docksal](http://docksal.io) for local development and in the CI. In additon to basic commands we also include:
 
 ```bash
 
@@ -26,16 +51,6 @@ Custom commands:
   theme-lint               	lint theme js
 
 ```
-
-## Installation
-
-[Install Docksal](https://docs.docksal.io/getting-started/setup/).
-
-Once you've setup docker run:
-
-``fin init``
-
-This will install the database and get you all ready to roll.
 
 ### Testing
 
@@ -73,11 +88,34 @@ After a site is properly setup to run with Acquia, Pantheon, or other hosting se
 
 ``fin init`` or ``fin init-site`` (the same as the former but doesn't rebuild the containers) to start from an installed or recently updated state.
 
-## Database updates
+### Database updates
 
 ``fin pull db`` to get a most recent database update.
 
-## Files updates
+### Files updates
 
 ``fin pull files`` to get an updated files directory from the host.
+
+## Deployment
+
+The command ``fin build-artifacts`` prepares the site for deployment. The commands ``fin deploy`` is set to push a built artifact when a tag or the develop branch is built from. By default ``fin deploy`` is run in TravisCI to push updates to the develop branch or when a new tag is pushed.
+
+### Pantheon
+
+To push work to the Pantheon Dev environment from local, assuming you are on branch release-v1.2.3 and want to push it to Pantheon Dev:
+
+``git push deploy release-v1.2.3:master``
+
+Note – With Pantheon, you can only push code from local to Dev via the “master” branch in Pantheon’s repo; pushing from Dev to Staging and from Staging to Prod must be done via the Pantheon UI.
+
+### Acquia
+
+To push work to Acquia from local, just push the desired release name:
+
+``git push deploy release-v1.2.3``
+
+
+
+
+
 
