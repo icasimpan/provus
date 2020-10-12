@@ -9,7 +9,7 @@ use Google_Service_YouTube;
 // phpcs:enable
 
 /**
- * Creates YoutubeFeed.
+ * Creates a YoutubeFeed from a URL.
  */
 class YoutubeFeed {
   use StringTranslationTrait;
