@@ -24,7 +24,7 @@ script:
   - fin drupal-coreupdate sendpr
 
 after_success:
-  - fin deploy
+  # - fin deploy
 
 notifications:
     on_success: always # default: change
