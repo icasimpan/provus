@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEV_BRANCH="develop"
+DEV_BRANCH="test-deploy-to-pantheon"
 REMOTE="master"
 CURRENT_BRANCH=`git name-rev --name-only HEAD`
 CURRENT_TAG=`git name-rev --tags --name-only $(git rev-parse HEAD)`
