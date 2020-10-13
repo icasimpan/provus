@@ -5,7 +5,7 @@ GH_REPO=github.com/promet/${REPO_NAME}.git
 
 coreupdate_try() {
   if [[ $(composer outdated "drupal/*"|grep -ic "^drupal/core") -eq 1 ]]; then
-    composer update drupal/core-recommended --with-dependencies && \
+    composer update drupal/core --with-dependencies && \
     drush updb -y                                   && \
     drush cr -y                                     && \
     drush st
