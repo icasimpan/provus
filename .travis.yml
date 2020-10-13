@@ -9,6 +9,8 @@ install:
   - fin update
   - fin version
   - fin sysinfo
+  - env | grep SECRET_TERMINUS_TOKEN > .docksal/docksal-local.env
+  - env | grep REMOTE_GIT_REPO >> .docksal/docksal-local.env
 
 before_script:
   - fin init
