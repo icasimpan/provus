@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
-CYPRESS_BASE_URL=${PROJECT_URL}
+
+#: exec_target = cli
+
+## Runs cypress from within the CLI 
+
+CYPRESS_BASE_URL="http://web"
 export CYPRESS_BASE_URL
-./scripts/bin/test-cypress.sh
+bash ./scripts/bin/test-cypress.sh

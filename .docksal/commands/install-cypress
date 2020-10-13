@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-fin exec "cd tests/cypress; npm i"
