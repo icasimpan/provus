@@ -2,4 +2,4 @@
 
 source ${PROJECT_ROOT}/scripts/bin/env.sh
 
-fin exec ${PROJECT_ROOT}/tests/cypress; npm i 
+cd ${PROJECT_ROOT}/tests/cypress; npm i 
