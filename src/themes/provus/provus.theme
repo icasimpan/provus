@@ -725,9 +725,11 @@ function provus_preprocess_columns(&$vars, $block) {
     $vars['blocks'] = [];
     foreach ($id_array as $key => $id) {
       $entity = $storage->load($id['target_id']);
-      $block_build['content'] = $view_builder->view($entity);
-      provus_get_block($block_build, $entity);
-      $vars['blocks'][] = $block_build;
+      if (is_object($entity)) {
+        $block_build['content'] = $view_builder->view($entity);
+        provus_get_block($block_build, $entity);
+        $vars['blocks'][] = $block_build;
+      }
     }
     unset($vars['content']['field_column_items']);
   }
